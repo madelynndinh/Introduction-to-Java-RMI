@@ -14,6 +14,7 @@ public class CalculatorImplementation extends UnicastRemoteObject implements Cal
 
     @Override
     public synchronized void pushValue(int val) throws RemoteException {
+        stack.push(val);
     }
 
     @Override
