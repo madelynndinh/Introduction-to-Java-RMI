@@ -28,7 +28,7 @@ public class CalculatorImplementation extends UnicastRemoteObject implements Cal
 
     @Override
     public synchronized boolean isEmpty() throws RemoteException {
-        return true;
+        return stack.isEmpty();
     }
 
     @Override
