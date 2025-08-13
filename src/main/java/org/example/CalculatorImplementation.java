@@ -23,8 +23,7 @@ public class CalculatorImplementation extends UnicastRemoteObject implements Cal
 
     @Override
     public synchronized int pop() throws RemoteException {
-        return 0;
-    }
+        return stack.pop();    }
 
     @Override
     public synchronized boolean isEmpty() throws RemoteException {
@@ -33,6 +32,12 @@ public class CalculatorImplementation extends UnicastRemoteObject implements Cal
 
     @Override
     public synchronized int delayPop(int millis) throws RemoteException {
-        return 0;
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new RemoteException("Interrupted during delay", e);
+        }
+        return pop();
     }
 }
